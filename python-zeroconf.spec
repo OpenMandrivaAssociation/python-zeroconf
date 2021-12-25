@@ -1,11 +1,11 @@
 Summary:	Multicast DNS Service Discovery for Python
 Name:		python-zeroconf
-Version:	0.37.0
+Version:	0.38.1
 Release:	1
 Group:		Development/Python
 License:	GPLv2+
 Url:		https://pypi.org/project/zeroconf/
-Source0:	https://files.pythonhosted.org/packages/5e/82/791c22d47f4622ce83553756461b682a0a1be1cbc0251201c6cf58a3fd66/zeroconf-0.37.0.tar.gz
+Source0:	https://files.pythonhosted.org/packages/9c/74/74a032f5841fd4ca24e89aa4b0b35f62321b96dda3c8e7d73665324e0984/zeroconf-0.38.1.tar.gz
 BuildRequires:	python3dist(setuptools)
 BuildArch:	noarch
 
