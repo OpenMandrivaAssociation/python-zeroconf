@@ -1,36 +1,42 @@
-Summary:	Multicast DNS Service Discovery for Python
+%global debug_package %{nil}
+%define module zeroconf
+
 Name:		python-zeroconf
-Version:	0.38.1
-Release:	2
+Summary:	Multicast DNS Service Discovery for Python
+Version:	0.148.0
+Release:	1
 Group:		Development/Python
-License:	GPLv2+
-Url:		https://pypi.org/project/zeroconf/
-Source0:	https://files.pythonhosted.org/packages/9c/74/74a032f5841fd4ca24e89aa4b0b35f62321b96dda3c8e7d73665324e0984/zeroconf-0.38.1.tar.gz
-BuildRequires:	python3dist(setuptools)
-BuildArch:	noarch
+License:	LGPL-2.1-or-later
+URL:		https://github.com/python-zeroconf/python-zeroconf
+Source0:	https://files.pythonhosted.org/packages/source/z/%{module}/%{module}-%{version}.tar.gz
+BuildSystem:	python
+
+BuildRequires:	python%{pyver}dist(cython)
+BuildRequires:	python%{pyver}dist(ifaddr)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(poetry-core)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(wheel)
+
 
 %description
 Multicast DNS Service Discovery for Python
 
-%files
-%{py_puresitedir}/zeroconf
-%{py_puresitedir}/zeroconf*.egg-info
-
-#------------------------------------------------------------
 %prep
-%autosetup -p1 -n zeroconf-%{version}
+%autosetup -n %{module}-%{version} -p1
+# no coverage checks
+sed -Ei 's/--cov(-|=)[^ "]+//g' pyproject.toml
 
 %build
-%set_build_flags
-
-export LDFLAGS="%{ldflags} -lpython%{py_ver}"
+export REQUIRE_CYTHON=1
+export LDFLAGS="%{ldflags} -lpython%{pyver}"
 %py_build
 
 %install
-%{__python} setup.py \
-	install \
-	--root="%{buildroot}" --skip-build --optimize=1
+%py_install
 
-%check
-%{__python} setup.py \
-	check
+%files
+%doc README.rst
+%license COPYING
+%{python_sitearch}/%{module}
+%{python_sitearch}/%{module}-%{version}.dist-info
