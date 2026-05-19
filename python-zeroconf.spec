@@ -3,12 +3,13 @@
 
 Name:		python-zeroconf
 Summary:	Multicast DNS Service Discovery for Python
-Version:	0.149.3
+Version:	0.149.7
 Release:	1
 Group:		Development/Python
 License:	LGPL-2.1-or-later
 URL:		https://github.com/python-zeroconf/python-zeroconf
 Source0:	%{URL}/archive/%{version}/%{name}-%{version}.tar.gz
+Source100:	%{name}.rpmlintrc
 
 BuildSystem:	python
 BuildRequires:	python%{pyver}dist(cython)
@@ -31,6 +32,5 @@ export LDFLAGS="%{ldflags} -lpython%{pyver}"
 
 %files
 %doc README.rst
-%license COPYING
 %{python_sitearch}/%{module}
 %{python_sitearch}/%{module}-%{version}.dist-info
