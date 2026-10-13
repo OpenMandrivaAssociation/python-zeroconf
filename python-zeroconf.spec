@@ -4,7 +4,7 @@
 Name:		python-zeroconf
 Summary:	Multicast DNS Service Discovery for Python
 Version:	0.150.0
-Release:	1
+Release:	2
 Group:		Development/Python
 License:	LGPL-2.1-or-later
 URL:		https://github.com/python-zeroconf/python-zeroconf
