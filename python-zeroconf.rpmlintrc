@@ -1,2 +1,2 @@
-# upstream false positive
-addFilter("E: incorrect-fsf-address")
+# incorrect-fsf-address does not match the source package.
+setBadness("incorrect-fsf-address", 0)
